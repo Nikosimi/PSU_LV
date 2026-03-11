@@ -19,7 +19,7 @@ try:
     for line in file:
         if line.startswith("X-DSPAM-Confidence:"):
             broj = float(line.split(":")[1])
-            sum = broj
+            sum += broj
             counter+=1
     if counter > 0:
         average = sum/counter
@@ -28,4 +28,5 @@ try:
     else:
         print("Nije nista pronadjeno")
 except:
+
     print("Greska u otvaranju datoteke!")
