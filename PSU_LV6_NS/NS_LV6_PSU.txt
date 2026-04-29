@@ -1,0 +1,48 @@
+Zadatak 1
+U prilogu vježbe nalazi se funkcija 6.1. koja služi za generiranje umjetnih podataka kako bi se demonstriralo grupiranje podataka. 
+Funkcija prima cijeli broj koji definira željeni broju uzoraka u skupu i cijeli broj (od 1 do 5) koji definira na koji način će se generirati podaci, 
+a vraća generirani skup podataka u obliku numpy polja pri čemu su prvi i drugi stupac vrijednosti prve odnosno druge ulazne veličine za svaki podatak.
+Generirajte 500 podataka i prikažite ih na slici. 
+Pomoću scikit-learn ugrađene metode za kmeans odredite centre klastera te svaki podatak obojite ovisno o njegovoj pripadnosti pojedinom klasteru (grupi). 
+Nekoliko puta pokrenite napisani kod. 
+Što primjećujete? Što se događa ako mijenjate način kako se generiraju podaci?
+- Prilikom više pokretanja rezultati se djelomično razlikuju, a mogući razlog je slučajna inicijalizacija centara. 
+- Funkcija flagc odnosno promjena od 1 do 5 jasno znači da KMeans dobro radi za okrugle klastere.
+
+
+Zadatak 2
+Scikit-learn kmeans metoda vraća i vrijednost kriterijske funkcije (6-3). 
+Za broj klastera od 1 do 20 odredite vrijednost kriterijske funkcije za podatke iz Zadatka 1. 
+Prikažite dobivene vrijednosti pri čemu je na x-osi broj klastera (npr. od 2 do 20), 
+a na y-osi vrijednost kriterijske funkcije. 
+Kako komentirate dobivene rezultate? Kako biste pomoću dobivenog grafa odredili optimalni broj klastera?
+- Funkcija je u stalnom padu, odnosno što je više klastera to je manje pogrešaka. 
+- Za optimalni K koristi se tzv. "elbow method" odnosno traži se lakat ili lom u grafu za optimalan K.
+
+
+Zadatak 3
+Primijenite hijerarhijsko grupiranje na podatke korištene u Zadatku 1 pomoću funkcije linkage koja je ugrađena scipy metoda za agglomerative clustering:
+from scipy.cluster.hierarchy import dendrogram, linkage
+Prikažite pripadni dendogram. 
+Mijenjajte korištenu metodu (argument method). Kako komentirate postignute rezultate?
+- Dendogram u ovome zadatku prikazuje spajanje klastera, promjenom metoda ward se pokazuje kao najbolji, a complete pokazuje kompaktnije klastere. 
+- U ovome zadatku vidimo kako hijerarhijsko grupiranje ne treba unaprijed K, međutim sporije je.
+
+Zadatak 4
+Primijenite scikit-learn kmeans metodu za kvantizaciju boje na slici. 
+Proučite kod 6.2. iz priloga vježbe te ga primijenite za kvantizaciju boje na slici example_grayscale.png koja dolazi kao prilog ovoj vježbi. 
+Mijenjajte broj klastera. Što primjećujete? 
+Izračunajte kolika se kompresija ove slike može postići ako se koristi 10 klastera.
+Pomoću sljedećeg koda možete učitati sliku:
+import matplotlib.image as mpimg
+imageNew = mpimg.imread('example_grayscale.png')
+- U ovome zadatku vidimo da promjenom klastera utječemo na kvalitetu fotografije, 
+dakle manjim brojem klastera dolazimo do lošije kvalitete, 
+a većim brojem klastera povećavamo kvalitetu fotografije.
+
+Zadatak 5
+Primijenite scikit-learn kmeans metodu za kvantizaciju boje na slici example.png koja dolazi kao prilog ovoj vježbi. 
+Prikažite originalnu i kvantiziranu sliku.
+- Također kao u prethodnom zadatku, 
+smanjenjem broja klastera utječemo na kvalitetu fotografije odnosno smanjujemo detalje boja, 
+međutim smanjenjem kvalitete smanjujemo količinu podataka.
